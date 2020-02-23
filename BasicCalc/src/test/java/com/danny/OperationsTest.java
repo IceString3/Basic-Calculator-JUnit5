@@ -65,7 +65,9 @@ public class OperationsTest {
     @ParameterizedTest
     @CsvSource ({"-4.0, -3.0",
                 "4.0, -3.0",
-                "-4.0, 3.0"})
+                "-4.0, 3.0",
+                "4.0, 3.0",
+                "0.0, 0.0"})
     public void multiplyNegativeNumbersTest(Double n1, Double n2) {
         if (((n1 < 0) && (n2 < 0)) || ((n1 > 0) && (n2 > 0))) {
             assertEquals (12.0, operations.multiply (n1, n2));
@@ -79,6 +81,11 @@ public class OperationsTest {
     @org.junit.jupiter.api.Test
     public void multiplyTestByZero() {
         assertEquals (0.0, operations.multiply (4.0, 0.0));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void multiplyWithNull() {
         assertNotNull (operations.multiply (4.0, null));
+        assertNotNull (operations.multiply (null, 2.0));
     }
 }
