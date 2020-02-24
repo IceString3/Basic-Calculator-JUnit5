@@ -10,5 +10,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace ();
         }
+        System.out.println (o.sum (3.0, 14.67));
+        System.out.println (o.subtract (7.4, -4.6));
+        System.out.println (o.multiply (6.0, 12.0));
     }
 }
