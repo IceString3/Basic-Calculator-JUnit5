@@ -80,5 +80,4 @@ public class Operations {
         }
         return n1 / n2;
     }
-
 }

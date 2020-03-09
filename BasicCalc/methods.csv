@@ -1,0 +1,5 @@
+Método;Descripción;Tipo;Parámetros;Tipo parámetros;Retorno;Tipo retorno;Throws;Ejemplo
+sum();Suma dos números;Double;n1, n2;Double;Devuelve la suma de 2 números;Double; ;sum(3, 6)
+subtract();Resta dos números;Double;n1, n2;Double;Devuelve la resta de 2 números;Double; ;subtract(5, 2)
+multiply();Multiplica dos números;Double;n1, n2;Double;Devuelve la multiplicación de 2 números;Double; ;multiply(7, 9)
+divide();Divide dos números;Double;n1, n2;Double;Devuelve la división de 2 números;Double;NullPointerException, NumberFormatException;divide(8, 3)

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.verapdf:pdf-model:1.14.103">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
