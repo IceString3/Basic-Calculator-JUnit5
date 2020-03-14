@@ -75,7 +75,7 @@ public class Operations {
     public Double divide(Double n1, Double n2) {
         if (n1 == null || n2 == null) {
             throw new NullPointerException ("Number cannot be null");
-        } else if (n2 <= 0) {
+        } else if (n2 == 0) {
             throw new NumberFormatException ("Divisor cannot be less than zero or zero");
         }
         return n1 / n2;

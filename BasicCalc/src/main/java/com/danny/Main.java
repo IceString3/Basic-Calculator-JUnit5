@@ -8,7 +8,8 @@ public class Main {
 
         CreatePdf pdf = new CreatePdf ();
 
-        Double[] numArray = new Double[]{3.0, 7.0, 14.0, -4.0, 5.0, -2.0, 8.0};
+        CalcWindow calc = new CalcWindow ();
+        calc.setVisible(true);
 
         Operations o = new Operations ();
         try {
@@ -20,6 +21,7 @@ public class Main {
         System.out.println (o.subtract (7.4, -4.6));
         System.out.println (o.multiply (6.0, 12.0));
 
-        pdf.createPdfFile ();
+        //pdf.createPdfFile ();
+
     }
 }

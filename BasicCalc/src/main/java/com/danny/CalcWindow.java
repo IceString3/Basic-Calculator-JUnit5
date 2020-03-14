@@ -1,4 +1,4 @@
-/*package com.danny;
+package com.danny;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -7,29 +7,33 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class CalcWindow extends JFrame {
-    *//**
+    /*
      * generado
-     *//*
+     */
     private static final long serialVersionUID = 1583724102189855698L;
+    Operations operations = new Operations ();
 
-    *//** numero tecleado *//*
+    /* numero tecleado */
     JTextField pantalla;
 
-    *//** guarda el resultado de la operacion anterior o el número tecleado *//*
-    double resultado;
+    /* guarda el resultado de la operacion anterior o el número tecleado */
+    double n1;
+    double n2;
+    double r = 0;
+    Double ans;
 
-    *//** para guardar la operacion a realizar *//*
+    /* para guardar la operacion a realizar */
     String operacion;
 
-    *//** Los paneles donde colocaremos los botones *//*
+    /* Los paneles donde colocaremos los botones */
     JPanel panelNumeros, panelOperaciones;
 
-    *//** Indica si estamos iniciando o no una operación *//*
+    /* Indica si estamos iniciando o no una operación */
     boolean nuevaOperacion = true;
 
-    *//**
+    /*
      * Constructor. Crea los botones y componentes de la calculadora
-     *//*
+     */
     public CalcWindow() {
         super();
         setSize(250, 300);
@@ -108,12 +112,12 @@ public class CalcWindow extends JFrame {
         panelOperaciones.add(btn);
     }
 
-    *//**
+    /*
      * Gestiona las pulsaciones de teclas numéricas
      *
      * @param digito
      *            tecla pulsada
-     *//*
+     */
     private void numeroPulsado(String digito) {
         if (pantalla.getText().equals("0") || nuevaOperacion) {
             pantalla.setText(digito);
@@ -125,20 +129,66 @@ public class CalcWindow extends JFrame {
 
     private void operacionPulsado(String tecla) {
         if (tecla.equals("=")) {
+            n2 = Double.parseDouble (pantalla.getText ());
             calcularResultado();
         } else if (tecla.equals("CE")) {
-            resultado = 0;
+            n1 = 0;
+            n2 = 0;
+            r = 0;
+            ans = null;
             pantalla.setText("");
             nuevaOperacion = true;
         } else {
             operacion = tecla;
-            if ((resultado > 0) && !nuevaOperacion) {
+            if ((n1 > 0) && !nuevaOperacion) {
+                n2 = Double.parseDouble (pantalla.getText ());
                 calcularResultado();
             } else {
-                resultado = new Double(pantalla.getText());
+                n1 = Double.parseDouble (pantalla.getText ());
             }
         }
 
         nuevaOperacion = true;
     }
-}*/
+
+
+    private void calcularResultado() {
+        switch (operacion) {
+            case "+":
+                if (ans == null) {
+                    r += operations.sum (n1, n2);
+                } else {
+                    r += operations.sum (0.0, n2);
+                }
+                ans = r;
+                break;
+            case "-":
+                if (ans == null) {
+                    r += operations.subtract (n1, n2);
+                } else {
+                    r += operations.subtract (0.0, n2);
+                }
+                ans = r;
+                break;
+            case "/":
+                if (ans == null) {
+                    r += operations.divide (n1, n2);
+                } else {
+                    r *= operations.divide (1.0, n2);
+                }
+                ans = r;
+                break;
+            case "*":
+                if (ans == null) {
+                    r += operations.multiply (n1, n2);
+                } else {
+                    r *= operations.multiply (1.0, n2);
+                }
+                ans = r;
+                break;
+        }
+
+        pantalla.setText("" + r);
+        operacion = "";
+    }
+}
