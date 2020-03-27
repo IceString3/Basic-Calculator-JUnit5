@@ -3,8 +3,12 @@ package com.danny;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class CalcWindow extends JFrame {
     /*
@@ -62,6 +66,7 @@ public class CalcWindow extends JFrame {
         }
 
         nuevoBotonNumerico(".");
+        nuevoBotonPdf ("PDF");
 
         panel.add("Center", panelNumeros);
 
@@ -89,7 +94,29 @@ public class CalcWindow extends JFrame {
             @Override
             public void mouseReleased(MouseEvent evt) {
                 JButton btn = (JButton) evt.getSource();
-                numeroPulsado(btn.getText());
+                try {
+                    numeroPulsado(btn.getText());
+                } catch (IOException e) {
+                    e.printStackTrace ();
+                }
+            }
+        });
+
+        panelNumeros.add(btn);
+    }
+
+    private void nuevoBotonPdf(String digito) {
+        JButton btn = new JButton();
+        btn.setText(digito);
+        btn.addMouseListener(new MouseAdapter () {
+
+            @Override
+            public void mouseReleased(MouseEvent evt) {
+                try {
+                    Desktop.getDesktop ().open (new File ("hello_world.pdf"));
+                } catch (IOException e) {
+                    e.printStackTrace ();
+                }
             }
         });
 
@@ -118,7 +145,7 @@ public class CalcWindow extends JFrame {
      * @param digito
      *            tecla pulsada
      */
-    private void numeroPulsado(String digito) {
+    private void numeroPulsado(String digito) throws IOException {
         if (pantalla.getText().equals("0") || nuevaOperacion) {
             pantalla.setText(digito);
         } else {
