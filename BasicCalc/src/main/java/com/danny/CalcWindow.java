@@ -40,7 +40,7 @@ public class CalcWindow extends JFrame {
      */
     public CalcWindow() {
         super();
-        setSize(250, 300);
+        setSize(300, 350);
         setTitle("Calculadora Simple");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
